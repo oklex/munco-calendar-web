@@ -1,0 +1,133 @@
+@import "../../styles/colours.scss";
+@import "../../styles/animations.scss";
+
+.ConferenceCalendar {
+  color: $dark-grey;
+
+  .split-screen {
+    height: auto !important;
+  }
+
+  .fixed-cover {
+    position: absolute;
+    width: 100%;
+    min-height: 90vh;
+    // z-index: -99999;
+    position: sticky;
+    top: 0;
+    .title {
+      height: 100%;
+      color: $dark-grey;
+      padding-left: calc(1em + 5vw);
+      padding-top: 40vh;
+      .filterBar {
+        padding-top: 10px;
+        .selection {
+          margin: 0px 10px 5px 10px;
+          padding: 0px 10px 5px 10px;
+          border-bottom: solid 2px grey;
+          max-width: 500px;
+          .selectionText {
+            color: $munco-green;
+            margin: 0px;
+            padding: 0px;
+          }
+        }
+        ul {
+          li {
+            font-size: 14px;
+            color: $neutral-grey;
+            display: inline-block;
+            padding: 0px 15px 5px 0px;
+            // margin: 5px;
+          }
+          li:hover {
+            color: black;
+          }
+        }
+      }
+      h1 {
+        font-size: 35px;
+        margin-bottom: 5px;
+      }
+      h2 {
+        font-size: 20px;
+        line-height: 25px;
+      }
+      .menu-tools {
+        margin-top: calc(25em);
+        padding-bottom: 20px;
+        .menu-tag {
+          position: relative;
+          padding: 3px;
+          padding-left: 10px;
+          padding-right: 10px;
+          border-radius: 10px;
+          color: $neutral-grey;
+          background-color: $light-grey;
+          width: fit-content;
+          margin-bottom: 5px;
+          .tooltiptext {
+            font-size: 14px;
+            visibility: hidden;
+            height: auto;
+            width: 150px;
+            margin: 0px;
+            position: absolute;
+            margin-left: 100%;
+            padding: 5px 10px 5px 10px;
+            top: 0;
+            background-color: white;
+            border: solid 1px $light-grey;
+            border-radius: 15px;
+            transition: ease-in-out;
+          }
+        }
+      }
+      .menu-tag:hover {
+        // visibility: hidden;
+        .tooltiptext {
+          visibility: visible;
+          // height: auto;
+          // width: 100%;
+          /* Chrome, Safari, Opera */
+          -webkit-animation-name: fadeIn;
+          -webkit-animation-duration: 0.2s;
+          /* Standard syntax */
+          animation-name: fadeIn;
+          animation-duration: 0.2s;
+        }
+      }
+    }
+  }
+  .calendar-section {
+    padding-top: 30vh;
+    padding-bottom: auto;
+    .errorMessage {
+      padding-top: 5em;
+      padding-bottom: 5em;
+      padding-left: 1em;
+      animation-name: fadeIn;
+      animation-duration: 0.5s;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .colapseOnMobile {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+  }
+  .fixed-cover {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: -99999;
+    position: sticky;
+    top: 0;
+  }
+  .calendar-section {
+    padding-top: 60px !important;
+  }
+}

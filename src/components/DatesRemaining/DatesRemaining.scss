@@ -1,0 +1,68 @@
+@import '../../styles/colours.scss';
+
+$open_color: $munco-green;
+$waiting_color: $munco-gold;
+$closed_color: $dark-grey;
+
+.date-indicator{
+    // background-color: $neutral-grey;
+    min-height: 3px;
+    height: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white;
+    .waiting-full {
+        background-color: $waiting_color;
+        height: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        display: flex;
+    }
+    .waiting {
+        height: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        display: flex;
+    }
+    .open-full {
+        background-color: $open_color;
+        height: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        display: flex;
+    }
+    .open {
+        height: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        display: flex;
+    }
+    .closed-full {
+        background-color: $closed_color;
+        height: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        display: flex;
+    }
+    .closed {
+        height: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        display: flex;
+    }
+    .segment {
+        width: 4.5%;
+        margin-right: 0.5%;
+        height: inherit;
+        // background-color: black;
+    }
+    .segment-closed {
+        background-color: $closed_color;
+    }
+    .segment-waiting {
+        background-color: $waiting_color;
+    }
+    .segment-open {
+        background-color: $open_color;
+    }
+}

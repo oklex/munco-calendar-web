@@ -1,0 +1,33 @@
+@import '../../styles/colours.scss';
+
+.footer {
+    background-color: $dark-grey;
+    color: $light-grey;
+    margin: 0 !important; // otherwise x-axiz grows
+    padding-top: 50px;
+    padding-bottom: 50px;
+    .socials {
+        margin-top: 40px;
+        button {
+            color: white;
+            border-radius: 30px;
+            margin-right: 20px;
+        }
+        .footer-email {
+            padding-left: 5px;
+            color: $light-grey;
+        }
+    }
+    a {
+        h1,h2,h3,h2,h3,h4 {
+            margin-bottom: 20px;
+        }
+        p {
+            margin: 0;
+        }
+    }
+    .btn:hover {
+        color: $dark-grey;
+    }
+}
+

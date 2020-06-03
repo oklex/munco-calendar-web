@@ -1,0 +1,16 @@
+@import '../../styles/colours.scss';
+
+.errorPage {
+  height: 90vh;
+  text-align: center;
+  .container {
+    padding-top: 30vh;
+    h1 {
+      font-size: 100px;
+      line-height: 135px;
+    }
+    .btn-gold {
+        color: $munco-blue;
+    }
+  }
+}
