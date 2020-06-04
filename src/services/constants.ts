@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const eventApiEndpoint = 'https://ancient-ravine-42785.herokuapp.com/'
+const eventApiEndpoint = 'https://munco-calendar.herokuapp.com/'
 let conferenceAPI = eventCreateAxiosInstance()
 
 

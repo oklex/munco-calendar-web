@@ -32,18 +32,26 @@
             margin: 0px;
             padding: 0px;
           }
+          .selectionBtn {
+            width: 100%;
+            text-align: left;
+          }
+          .selectionBtn::after {
+            margin-left: 10px;
+          }
+          .selectionBtn:focus {
+            box-shadow: none;
+          }
         }
-        ul {
-          li {
+        .filterOption {
             font-size: 14px;
-            color: $neutral-grey;
+            color: black;
             display: inline-block;
             padding: 0px 15px 5px 0px;
-            // margin: 5px;
-          }
-          li:hover {
-            color: black;
-          }
+            padding-left: 15px;
+        }
+        .notAvailable {
+          color: $neutral-grey
         }
       }
       h1 {
