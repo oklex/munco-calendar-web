@@ -21,7 +21,6 @@ try {
     messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID,
   };
-  console.log('firebase config: ', config)
   firebase.initializeApp(config);
 } catch (err) {
   console.log("Firebase connection failed");
