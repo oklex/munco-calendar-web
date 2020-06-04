@@ -6,10 +6,9 @@ class Subscribe extends React.Component<{}, {}> {
   getNotifications = () => {
     // Retrieve Firebase Messaging object.
     const messaging = firebase.messaging();
-    const key: any = process.env.PUBLIC_VAPID_KEY;
+    const key: any = process.env.REACT_APP_PUBLIC_VAPID_KEY;
     if (key !== undefined) {
       messaging.usePublicVapidKey(key);
-
       // Get Instance ID token. Initially this makes a network call, once retrieved
       // subsequent calls to getToken will return from cache.
       messaging
@@ -18,7 +17,7 @@ class Subscribe extends React.Component<{}, {}> {
           if (currentToken) {
             // sendTokenToServer(currentToken);
             // updateUIForPushEnabled(currentToken);
-            console.log('currentToken')
+            console.log('currentToken: ', currentToken)
           } else {
             // Show permission request.
             console.log(
