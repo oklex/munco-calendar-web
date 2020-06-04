@@ -18,6 +18,7 @@ interface IDatesRemainingState {
   timerBarClass: TimerBarClass | null;
   timerDisplayDate: Date | null;
   timerDescription: string | null;
+  timerDaysRemaining: string | null
 }
 
 enum TimerBarClass {
@@ -40,11 +41,17 @@ class DatesRemaining extends React.Component<
     timerBarClass: null,
     timerDisplayDate: null,
     timerDescription: null,
+    timerDaysRemaining: null
   };
 
   componentDidMount = () => {
     console.log(this.props, " c. ", this.state);
     console.log("date test: ", new Date(this.props.endDate));
+    
+    const daysRemaining: number = this.getDaysUntil(this.state.endMoment.toDate());
+    this.setState({
+      timerDaysRemaining: "[ " + daysRemaining + " days remaining ]"
+    })
     if (this.state.endMoment.isBefore()) {
       console.log(
         "ended on: ",
@@ -104,7 +111,7 @@ class DatesRemaining extends React.Component<
   };
 
   renderDateDescription = () => {
-    return <p className="miniText">{this.state.timerDescription}</p>;
+  return <p className="weight-300 miniText">{this.state.timerDescription}<br/>{this.state.timerDaysRemaining}</p>;
   };
 
   renderTimerBar = () => {
