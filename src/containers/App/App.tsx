@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Helmet from "react-helmet";
 import Error404 from "../Error404/Error404";
 import Calendar from "../Calendar/Calendar";
+import Subscribe from "../Subscribe/Subscribe";
 
 class App extends React.Component<{}, {}> {
   show404 = () => {
@@ -12,6 +13,10 @@ class App extends React.Component<{}, {}> {
 
   showCalendar = () => {
     return <Calendar/>
+  }
+
+  showSubscribe = () => {
+    return <Subscribe/>
   }
 
   render() {
@@ -27,6 +32,7 @@ class App extends React.Component<{}, {}> {
         <div className="App">
           <Switch>
             <Route exact path="/" component={this.showCalendar} />
+            <Route exact path="/subscribe" component={this.showSubscribe} />
             <Route component={this.show404} />
           </Switch>
           {/* <Footer /> */}
