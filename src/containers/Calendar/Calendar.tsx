@@ -128,7 +128,7 @@ export class Calendar extends React.Component<{}, ICalendarState> {
   };
   showAllFilterOptions = () => {
     return allCalendarFilterTypes.map((type: string) => {
-      if (type != this.state.selectedFilter) {
+      if (type !== this.state.selectedFilter) {
         return (
           <span
             className="filterOption notAvailable dropdown-item"
@@ -137,7 +137,7 @@ export class Calendar extends React.Component<{}, ICalendarState> {
             {type}
           </span>
         );
-      }
+      } else return null
     });
   };
 
