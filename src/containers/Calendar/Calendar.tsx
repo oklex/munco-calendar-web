@@ -133,6 +133,7 @@ export class Calendar extends React.Component<{}, ICalendarState> {
           <span
             className="filterOption notAvailable dropdown-item"
             data-tip="option not available yet"
+            key={type.toString()}
           >
             {type}
           </span>

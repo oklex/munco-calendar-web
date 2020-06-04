@@ -18,7 +18,7 @@ interface IDatesRemainingState {
   timerBarClass: TimerBarClass | null;
   timerDisplayDate: Date | null;
   timerDescription: string | null;
-  timerDaysRemaining: string | null
+  timerDaysRemaining: string | null;
 }
 
 enum TimerBarClass {
@@ -33,33 +33,35 @@ class DatesRemaining extends React.Component<
 > {
   state: IDatesRemainingState = {
     currentDate: this.props.currentDate ? this.props.currentDate : new Date(),
-    startMoment: moment(this.props.startDate).startOf('day'),
-    endMoment: moment(this.props.endDate).endOf('day'),
+    startMoment: moment(this.props.startDate).startOf("day"),
+    endMoment: moment(this.props.endDate).endOf("day"),
     startDateText: moment(this.props.startDate).format("(dddd), MMM Do"),
     endDateText: moment(this.props.endDate).format("(dddd), MMM Do"),
     oneWeekFromNow: moment(new Date()).add(7, "days"),
     timerBarClass: null,
     timerDisplayDate: null,
     timerDescription: null,
-    timerDaysRemaining: null
+    timerDaysRemaining: null,
   };
 
   componentDidMount = () => {
-    console.log(this.props, " c. ", this.state);
-    console.log("date test: ", new Date(this.props.endDate));
-    
-    const daysRemaining: number = this.getDaysUntil(this.state.endMoment.toDate());
+    //console.log(this.props, " c. ", this.state);
+    //console.log("date test: ", new Date(this.props.endDate));
+
+    const daysRemaining: number = this.getDaysUntil(
+      this.state.endMoment.toDate()
+    );
     this.setState({
-      timerDaysRemaining: "[ " + daysRemaining + " days remaining ]"
-    })
+      timerDaysRemaining: "[ " + daysRemaining + " days remaining ]",
+    });
     if (this.state.endMoment.isBefore()) {
-      console.log(
-        "ended on: ",
-        this.props.endDate,
-        "it is currently",
-        this.state.currentDate,
-        this.state.endDateText
-      );
+      //console.log(
+      //   "ended on: ",
+      //   this.props.endDate,
+      //   "it is currently",
+      //   this.state.currentDate,
+      //   this.state.endDateText
+      // );
       this.setState({
         timerBarClass: TimerBarClass.CLOSED,
         timerDisplayDate: this.props.endDate,
@@ -71,27 +73,25 @@ class DatesRemaining extends React.Component<
         this.state.endMoment.isSame(moment(), "day") &&
         this.state.endMoment.isSame(moment(), "month")
       ) {
-        console.log(
-          "closing today",
-          this.props.endDate,
-          this.state.currentDate
-        );
+        //console.log(
+        //   "closing today",
+        //   this.props.endDate,
+        //   this.state.currentDate
+        // );
         this.setState({
           timerBarClass: TimerBarClass.OPEN,
           timerDisplayDate: this.props.endDate,
           timerDescription: "closing today! " + this.state.endDateText,
         });
-      } else if (
-        this.state.endMoment.isBefore(this.state.oneWeekFromNow) 
-      ) {
-        console.log("closing soon", this.props.endDate, this.state.currentDate);
+      } else if (this.state.endMoment.isBefore(this.state.oneWeekFromNow)) {
+        //console.log("closing soon", this.props.endDate, this.state.currentDate);
         this.setState({
           timerBarClass: TimerBarClass.OPEN,
           timerDisplayDate: this.props.endDate,
           timerDescription: "closing soon; on " + this.state.endDateText,
         });
       } else {
-        console.log("closing later");
+        //console.log("closing later");
         this.setState({
           timerBarClass: TimerBarClass.OPEN,
           timerDisplayDate: this.props.endDate,
@@ -111,7 +111,13 @@ class DatesRemaining extends React.Component<
   };
 
   renderDateDescription = () => {
-  return <p className="weight-300 miniText">{this.state.timerDescription}<br/>{this.state.timerDaysRemaining}</p>;
+    return (
+      <p className="weight-300 miniText">
+        {this.state.timerDescription}
+        <br />
+        {this.state.timerDaysRemaining}
+      </p>
+    );
   };
 
   renderTimerBar = () => {
@@ -123,7 +129,7 @@ class DatesRemaining extends React.Component<
         // return a solid bar
         return <div className={this.state.timerBarClass + "-full"}></div>;
       } else {
-        console.log(segments);
+        //console.log(segments);
         return (
           <div className={this.state.timerBarClass}>
             {this.renderSegments(segments)}
@@ -159,11 +165,11 @@ class DatesRemaining extends React.Component<
 
   getDaysUntil = (comingDate: Date) => {
     let millisecondsPerDay = 1000 * 60 * 60 * 24;
-    let comingTime: Moment = moment(comingDate)
-    let currentTime: Moment = moment(this.state.currentDate)
+    let comingTime: Moment = moment(comingDate);
+    let currentTime: Moment = moment(this.state.currentDate);
     let millisBetween = comingTime.diff(currentTime);
     let days = millisBetween / millisecondsPerDay;
-    console.log("days until: ", comingDate, Math.ceil(days));
+    //console.log("days until: ", comingDate, Math.ceil(days));
     return Math.ceil(days);
   };
 
