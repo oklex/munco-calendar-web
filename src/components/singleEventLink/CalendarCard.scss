@@ -3,12 +3,12 @@
 $standardSpacing: 15px;
 
 .CalendarCard {
-  max-width: 600px;
+  max-width: 700px;
   height: auto;
-  background-color: $light-grey;
-  padding: $standardSpacing;
-  padding-top: 30px;
-  margin: $standardSpacing;
+  // background-color: $light-grey;
+  // padding: $standardSpacing;
+  padding-top: 20px;
+  margin-right: $standardSpacing;
   h1,
   h2,
   h3,
@@ -23,6 +23,9 @@ $standardSpacing: 15px;
   }
   .title {
     margin-bottom: $standardSpacing;
+    padding: $standardSpacing;
+    background-color: $light-grey;
+    padding-top: 30px;
     h1 {
       font-size: 30px;
       line-height: 30px;
@@ -30,6 +33,9 @@ $standardSpacing: 15px;
   }
   .eventDetails {
     margin-bottom: $standardSpacing;
+    // padding: $standardSpacing;
+    // background-color: $light-grey;
+    margin-left: $standardSpacing !important;
     .tag {
       display: inline-block;
       padding-left: 10px;
@@ -49,6 +55,9 @@ $standardSpacing: 15px;
   }
   .AppDetails {
     margin-bottom: $standardSpacing;
+    // padding: $standardSpacing;
+    // background-color: $light-grey;
+    margin-left: $standardSpacing !important;
     button {
       margin-bottom: 5px;
     .applyBtn {
