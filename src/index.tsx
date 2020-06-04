@@ -1,15 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './containers/App/App'
-import * as serviceWorker from './serviceWorker';
-import './styles/index.scss';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { FirebaseInitialize } from './services/FirebaseService';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./containers/App/App";
+import * as serviceWorker from "./serviceWorker";
+import "./styles/index.scss";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-require('dotenv').config()
+require("dotenv").config(); // required for process.env
 
-ReactDOM.render(<App />, document.getElementById('root'));
-FirebaseInitialize()
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
