@@ -46,16 +46,16 @@ class Subscribe extends React.Component<{}, {}> {
       });
   };
 
-  render() {
-    return (
-      <div className="subscribePage container">
-        {/* <h3>Subscribe to web-notifications</h3> */}
-        <button onClick={() => this.getNotifications()}>
-          set-up web notifications
-        </button>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="subscribePage container">
+				{/* <h3>Subscribe to web-notifications</h3> */}
+				<button onClick={() => this.getNotifications()}>
+					set-up web notifications
+				</button>
+			</div>
+		);
+	}
 }
 
 export default Subscribe;
