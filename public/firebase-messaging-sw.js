@@ -21,6 +21,7 @@
  const messaging = firebase.messaging();
 
  messaging.setBackgroundMessageHandler(function(payload) {
+   console.log('setBackgroundMessageHandler')
   const promiseChain = clients
     .matchAll({
       type: "window",
@@ -36,4 +37,9 @@
       return registration.showNotification("my notification title");
     });
   return promiseChain;
+});
+
+self.addEventListener('notificationclick', function(event) {
+  window.location.href = '/'
+  console.log('notification clicked')
 });
