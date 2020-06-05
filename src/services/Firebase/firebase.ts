@@ -1,10 +1,11 @@
 import app from 'firebase/app';
 import 'firebase/messaging'
-// import 'firebase/auth'
+import 'firebase/auth'
 
 class Firebase {
   auth: any;
   messaging: any;
+  fcmToken: string | null;
   constructor() {
     let config: any = {
       apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -18,7 +19,8 @@ class Firebase {
     if (config.databaseURL !== undefined) {
       try {
         app.initializeApp(config);
-        // this.auth = app.auth();
+        this.auth = app.auth();
+        this.fcmToken = null;
         this.messaging = app.messaging()
         const key: any = process.env.REACT_APP_PUBLIC_VAPID_KEY;
         if (key !== undefined) {
@@ -43,24 +45,16 @@ class Firebase {
     this.messaging
     .getToken()
     .then((currentToken: string) => {
-      if (currentToken) {
-        // sendTokenToServer(currentToken);
-        // updateUIForPushEnabled(currentToken);
+      if (currentToken.length > 0) {
         console.log("currentToken: ", currentToken);
+        this.fcmToken = currentToken;
+        // sendTokenToServer(currentToken);
       } else {
-        // Show permission request.
-        console.log(
-          "No Instance ID token available. Request permission to generate one."
-        );
-        // Show permission UI.
-        // updateUIForPushPermissionRequired();
-        // setTokenSentToServer(false);
+        throw Error("bad token")
       }
     })
     .catch((err: Error) => {
       console.log("An error occurred while retrieving token. ", err);
-      //   showToken("Error retrieving Instance ID token. ", err);
-      //   setTokenSentToServer(false);
     });
   }
 
