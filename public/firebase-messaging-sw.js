@@ -8,13 +8,13 @@
  // your app's Firebase config object.
  // https://firebase.google.com/docs/web/setup#config-object
  firebase.initializeApp({
-   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-   authDomain:  process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-   databaseURL:  process.env.REACT_APP_FIREBASE_DATABASE_URL,
-   projectId:  process.env.REACT_APP_FIREBASE_PROJECT_ID,
-   storageBucket:  process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-   messagingSenderId:  process.env.REACT_APP_FIREBASE_SENDER_ID,
-   appId:  process.env.REACT_APP_FIREBASE_APP_ID
+   apiKey: 'AIzaSyB1fCZW3o0zzeQouUGLx2JAQEWY2FGj63U',
+   authDomain:  'munco-calendar.firebaseapp.com',
+   databaseURL:  'https://munco-calendar.firebaseio.com',
+   projectId:  'munco-calendar',
+   storageBucket:  'munco-calendar.appspot.com',
+   messagingSenderId:  '686062822496',
+   appId:  '1:686062822496:web:b112e8f259c78b5cf30f05'
  });
  // Retrieve an instance of Firebase Messaging so that it can handle background
  // messages.
