@@ -21,7 +21,7 @@
  const messaging = firebase.messaging();
 
  messaging.setBackgroundMessageHandler(function(payload) {
-   console.log('setBackgroundMessageHandler', payload)
+   console.log('setBackgroundMessageHandler')
   const promiseChain = clients
     .matchAll({
       type: "window",
@@ -37,11 +37,6 @@
       return registration.showNotification("my notification title");
     });
   return promiseChain;
-});
-
-messaging.onMessage((payload) => {
-  console.log('Message received. ', payload);
-  // ...
 });
 
 self.addEventListener('notificationclick', function(event) {
