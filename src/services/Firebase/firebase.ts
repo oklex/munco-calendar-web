@@ -25,6 +25,10 @@ class Firebase {
         const key: any = process.env.REACT_APP_PUBLIC_VAPID_KEY;
         if (key !== undefined) {
           this.messaging.usePublicVapidKey(key);
+          this.messaging.onMessage((payload: any) => {
+            console.log("Message recieved ", payload);
+            // ..
+          })
         } else {
           console.log("no web-notification key");
           throw Error("no web-notification key");
@@ -43,19 +47,19 @@ class Firebase {
   getFCMToken = () => {
     console.log("Firebase::getFCMToken()")
     this.messaging
-    .getToken()
-    .then((currentToken: string) => {
-      if (currentToken.length > 0) {
-        console.log("currentToken: ", currentToken);
-        this.fcmToken = currentToken;
-        // sendTokenToServer(currentToken);
-      } else {
-        throw Error("bad token")
-      }
-    })
-    .catch((err: Error) => {
-      console.log("An error occurred while retrieving token. ", err);
-    });
+      .getToken()
+      .then((currentToken: string) => {
+        if (currentToken.length > 0) {
+          console.log("currentToken recieved");
+          this.fcmToken = currentToken;
+          // sendTokenToServer(currentToken);
+        } else {
+          throw Error("bad token")
+        }
+      })
+      .catch((err: Error) => {
+        console.log("An error occurred while retrieving token. ", err);
+      });
   }
 
 }
