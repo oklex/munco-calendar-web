@@ -1,6 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/messaging'
 import 'firebase/auth'
+import NotificationService from '../Notifications/notifications';
 
 class Firebase {
   auth: any;
@@ -44,15 +45,22 @@ class Firebase {
     }
   }
 
-  getFCMToken = () => {
+  getFCMToken = async () => {
     console.log("Firebase::getFCMToken()")
-    this.messaging
+    return await this.messaging
       .getToken()
-      .then((currentToken: string) => {
+      .then(async (currentToken: string) => {
         if (currentToken.length > 0) {
           console.log("currentToken recieved");
           this.fcmToken = currentToken;
-          // sendTokenToServer(currentToken);
+          let check: any = await NotificationService.check(this.fcmToken)
+          if (check.settings) {
+            console.log('token already registered ', check)
+            return check
+          } else {
+            console.log('registering token ')
+            return await NotificationService.register(this.fcmToken)
+          }
         } else {
           throw Error("bad token")
         }
