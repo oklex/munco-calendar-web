@@ -11,12 +11,21 @@ class Subscribe extends React.Component<{}, {}> {
     firebase.getFCMToken()
   }
 
+  deleteFCMButton = (e: any) => {
+    let firebase = this.context;
+    firebase.deleteFCMTOken()
+  }
+
   render() {
     return (
       <div className="subscribePage container">
         <h3>Subscribe to web-notifications</h3>
 				<button onClick={this.subButton}>
 					set-up web notifications
+				</button>
+        <br/>
+				<button onClick={this.deleteFCMButton}>
+					cancel your web notifications
 				</button>
       </div>
     );
