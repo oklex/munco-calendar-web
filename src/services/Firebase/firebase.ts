@@ -28,7 +28,12 @@ class Firebase {
           this.messaging.usePublicVapidKey(key);
           this.messaging.onMessage((payload: any) => {
             console.log("Message recieved ", payload);
-            // ..
+            // navigator.serviceWorker.getRegistration().then(function(reg:any) {
+            //   reg.showNotification(payload.data.title, {
+            //     icon: '/favicon.ico',
+            //     body: payload.data.body
+            //   })
+            // })
           })
         } else {
           console.log("no web-notification key");
@@ -68,6 +73,17 @@ class Firebase {
       .catch((err: Error) => {
         console.log("An error occurred while retrieving token. ", err);
       });
+  }
+
+  deleteFCMTOken = () => {
+    console.log('Firebase::deleteFCMTOken()')
+    if (this.fcmToken) {
+      try {
+        NotificationService.unregister(this.fcmToken)
+      } catch (err) {
+        console.log(err)
+      }
+    }
   }
 
 }
