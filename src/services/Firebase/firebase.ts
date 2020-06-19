@@ -26,14 +26,6 @@ class Firebase {
         const key: any = process.env.REACT_APP_PUBLIC_VAPID_KEY;
         if (key !== undefined) {
           this.messaging.usePublicVapidKey(key);
-          // move actual send to service worker :. push message to service worker
-          this.messaging.onMessage((payload: any) => {
-            console.log("Message recieved ", payload);
-            new Notification(payload.notification.title, {
-                  icon: 'https://s3-us-west-2.amazonaws.com/munco.ca/brand/Original+02-700px.png',
-                  body: payload.notification.body,
-                })
-          })
         } else {
           console.log("no web-notification key");
           throw Error("no web-notification key");
