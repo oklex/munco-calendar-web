@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-const eventApiEndpoint = (process.env.NODE_ENV === 'production')? 'https://munco-calendar.herokuapp.com/' : '//localhost:8081'
+const eventApiEndpoint = 'https://munco-calendar.herokuapp.com/'
 let conferenceAPI = eventCreateAxiosInstance()
+
 
 function eventCreateAxiosInstance() {
     return axios.create({
