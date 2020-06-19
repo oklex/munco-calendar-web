@@ -31,7 +31,7 @@ self.addEventListener("notificationclick", function (event) {
 });
 
 function showNotification(payload) {
-  self.registration.showNotification(payload.data.title, {
+  return self.registration.showNotification(payload.data.title, {
     icon: 'https://s3-us-west-2.amazonaws.com/munco.ca/brand/Original+02-700px.png',
     body: payload.data.body,
   })
