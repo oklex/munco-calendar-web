@@ -17,17 +17,22 @@ firebase.initializeApp({
   messagingSenderId: "686062822496",
   appId: "1:686062822496:web:b112e8f259c78b5cf30f05",
 });
-// Retrieve an instance of Firebase Messaging so that it can handle background
-// messages.
-const messaging = firebase.messaging();
 
-messaging.setBackgroundMessageHandler(function (payload) {
-  console.log("setBackgroundMessageHandler", payload);
 
-  return self.registration.showNotification();
+self.addEventListener('push', function (event) {
+  let payload = event.data.json()
+  console.log("Message recieved ", payload);
+  this.showNotification(payload)
 });
 
 self.addEventListener("notificationclick", function (event) {
   window.location.href = "/";
   console.log("notification clicked");
 });
+
+function showNotification(payload) {
+  self.registration.showNotification(payload.data.title, {
+    icon: 'https://s3-us-west-2.amazonaws.com/munco.ca/brand/Original+02-700px.png',
+    body: payload.data.body,
+  })
+}
