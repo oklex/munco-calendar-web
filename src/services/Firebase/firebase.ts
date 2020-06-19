@@ -26,6 +26,7 @@ class Firebase {
         const key: any = process.env.REACT_APP_PUBLIC_VAPID_KEY;
         if (key !== undefined) {
           this.messaging.usePublicVapidKey(key);
+          // move actual send to service worker :. push message to service worker
           this.messaging.onMessage((payload: any) => {
             console.log("Message recieved ", payload);
             new Notification(payload.notification.title, {
