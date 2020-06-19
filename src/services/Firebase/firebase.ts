@@ -28,12 +28,11 @@ class Firebase {
           this.messaging.usePublicVapidKey(key);
           this.messaging.onMessage((payload: any) => {
             console.log("Message recieved ", payload);
-            // navigator.serviceWorker.getRegistration().then(function(reg:any) {
-            //   reg.showNotification(payload.data.title, {
-            //     icon: '/favicon.ico',
-            //     body: payload.data.body
-            //   })
-            // })
+            new Notification(payload.notification.title, {
+                  icon: 'https://s3-us-west-2.amazonaws.com/munco.ca/brand/Original+02-700px.png',
+                  body: payload.notification.body,
+                  badge: '/favicon.ico'
+                })
           })
         } else {
           console.log("no web-notification key");
