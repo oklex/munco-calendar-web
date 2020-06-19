@@ -31,7 +31,6 @@ class Firebase {
             new Notification(payload.notification.title, {
                   icon: 'https://s3-us-west-2.amazonaws.com/munco.ca/brand/Original+02-700px.png',
                   body: payload.notification.body,
-                  badge: '/favicon.ico'
                 })
           })
         } else {
