@@ -18,10 +18,11 @@ firebase.initializeApp({
   appId: "1:686062822496:web:b112e8f259c78b5cf30f05",
 });
 
-self.addEventListener("push", function (event) {
-  let payload = event.data.json();
+
+self.addEventListener('push', function (event) {
+  let payload = event.data.json()
   console.log("Message recieved ", payload);
-  this.showNotification(payload);
+  this.showNotification(payload)
 });
 
 self.addEventListener("notificationclick", function (event) {
@@ -29,45 +30,9 @@ self.addEventListener("notificationclick", function (event) {
   console.log("notification clicked");
 });
 
-async function isClientFocused() {
-  return clients.matchAll({
-    type: 'window',
-    includeUncontrolled: true
-  })
-  .then((windowClients) => {
-    let clientIsFocused = false;
-    for (let i = 0; i < windowClients.length; i++) {
-      const windowClient = windowClients[i];
-      if (windowClient.focused) {
-        clientIsFocused = true;
-        break;
-      }
-    }
-
-    return clientIsFocused;
-  });
-}
-
 function showNotification(payload) {
-  if (await isClientFocused()) {
-    console.log('client is focused')
-    const windowClients = await clients.matchAll({
-      type: "window",
-      includeUncontrolled: true,
-    });
-    windowClients.forEach((windowClient) => {
-      windowClient.postMessage({
-        message: "Received a push message.",
-        time: new Date().toString(),
-      });
-    });
-    return;
-  } 
-  
   return self.registration.showNotification(payload.data.title, {
-      icon:
-        "https://s3-us-west-2.amazonaws.com/munco.ca/brand/Original+02-700px.png",
-      body: payload.data.body,
-    });
-  
+    icon: 'https://s3-us-west-2.amazonaws.com/munco.ca/brand/Original+02-700px.png',
+    body: payload.data.body,
+  })
 }
