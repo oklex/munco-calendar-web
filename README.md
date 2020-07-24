@@ -3,6 +3,8 @@
 
 built using React
 
-munco.ca
 heroku link: munco-calendar.herokuapp.com
-aws link: calendar.munco.ca
+admin link: munco-calendar.herokuapp.com/admin
+api link: munco-calendar.herokuapp.com/api
+
+(unavailable) aws link: calendar.munco.ca
